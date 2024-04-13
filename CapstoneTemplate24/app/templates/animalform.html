@@ -1,0 +1,47 @@
+<!-- this is a generic form page.  Best way to make a new form page is to 
+copy this one and then edit it. -->
+
+{% extends "base.html" %}
+
+{% block body %}
+<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+
+<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+
+<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+        <h1></h1>
+
+        <form method=post>
+            {{ form.hidden_tag() }}
+
+            <p>
+                {{ form.animalname.label }}<br>
+                {{ form.animalname() }}<br>
+                {% for error in form.animalname.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+             <p>
+                <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+                <img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+                <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+                <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+
+<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+
+
+
+
+
+
+<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+
+
+                {{form.submit()}}
+            </p>
+        </form>
+       
+{% endblock %}
