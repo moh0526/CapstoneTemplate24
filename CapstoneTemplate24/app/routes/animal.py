@@ -95,6 +95,7 @@ def animalNew():
         newAnimal = Animal(
             # the left side is the name of the field from the data table
             # the right side is the data the user entered which is held in the form object.
+            subject = form.subject.data,
             animalname = form.animalname.data,
             author = current_user.id,
             # This sets the modifydate to the current datetime.
@@ -139,6 +140,7 @@ def animalEdit(animalID):
     if form.validate_on_submit():
         # update() is mongoengine method for updating an existing document with new data.
         editAnimal.update(
+            subject = form.subject.data,
             animalname = form.animalname.data,
             modify_date = dt.datetime.utcnow
         )
@@ -147,6 +149,7 @@ def animalEdit(animalID):
 
     # if the form has NOT been submitted then take the data from the editBlog object
     # and place it in the form object so it will be displayed to the user on the template.
+    form.subject.data = editAnimal.subject
     form.animalname.data = editAnimal.animalname
 
 

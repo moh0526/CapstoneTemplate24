@@ -46,6 +46,11 @@ class AnimalForm(FlaskForm):
     animalname = StringField('Animal Name', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
+class TeacherReviewForm(FlaskForm):
+    subject = StringField('Subject', validators=[DataRequired()])
+    
+    submit = SubmitField('Submit')
+
 class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])
     submit = SubmitField('Comment')

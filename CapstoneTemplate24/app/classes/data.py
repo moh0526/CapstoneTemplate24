@@ -72,7 +72,37 @@ class Blog(Document):
 
 class Animal(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE)
+    subject = StringField()
     animalname = StringField()
+    create_date = DateTimeField(default=dt.datetime.utcnow)
+    modify_date = DateTimeField()
+    meta = {
+        'ordering': ['-createdate']
+    }
+
+class Teacher(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE)
+    subject = StringField()
+    fname = StringField()
+    lname = StringField()
+    teacheremail = StringField()
+    course = StringField()
+    classes_taught = StringField()
+    room = IntField()
+    create_date = DateTimeField(default=dt.datetime.utcnow)
+    modify_date = DateTimeField()
+    meta = {
+        'ordering': ['-createdate']
+    }
+
+class Review(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE)
+    subject = StringField()
+    five_star_rating = FloatField()
+    stress_rating = FloatField()
+    listen_music = BooleanField()
+    break_time = BooleanField()
+    games_lesson = BooleanField()
     create_date = DateTimeField(default=dt.datetime.utcnow)
     modify_date = DateTimeField()
     meta = {

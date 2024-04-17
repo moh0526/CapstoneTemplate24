@@ -4,44 +4,37 @@ copy this one and then edit it. -->
 {% extends "base.html" %}
 
 {% block body %}
-<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+        <h1> Animal Form</h1>
 
-<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
-<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
-
-<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
-        <h1></h1>
+        <!--List all errors in a group at the top-->
+        {% for author in form.errors %}
+            {% for error in form.errors[author] %}
+                <div class="alert alert-error">
+                    <strong>Error!</strong>{{author}}: {{error}}
+                </div>
+            {% endfor %}
+        {% endfor %}
 
         <form method=post>
             {{ form.hidden_tag() }}
 
             <p>
-                {{ form.animalname.label }}<br>
-                {{ form.animalname() }}<br>
-                {% for error in form.animalname.errors %}
+                {{ form.subject.label }}<br>
+                {{ form.subject() }}<br>
+                {% for error in form.subject.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
 
-             <p>
-                <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
-                <img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
-                <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
-                <img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+            {{ form.animalname.label }} <br>
+            {{ form.animalname(size=64) }}
+            <!--List the errors for this field-->
+            {% for error in form.animalname.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
 
-<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
-<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
-
-
-
-
-
-
-<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
-
-
-                {{form.submit()}}
-            </p>
+            <br> <br>
+            {{form.submit()}}
         </form>
-       
+        
 {% endblock %}
