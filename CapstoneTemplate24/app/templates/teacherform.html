@@ -1,0 +1,87 @@
+<!-- this is a generic form page.  Best way to make a new form page is to 
+copy this one and then edit it. -->
+
+{% extends "base.html" %}
+
+{% block body %}
+        <h1> Teacher Form</h1>
+
+        <!--List all errors in a group at the top-->
+        {% for author in form.errors %}
+            {% for error in form.errors[author] %}
+                <div class="alert alert-error">
+                    <strong>Error!</strong>{{author}}: {{error}}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <form method=post>
+            {{ form.hidden_tag() }}
+
+            {{ form.teacher_fname.label}} <br>
+            {{ form.teacher_fname(size=64)}}
+            <!--List the errors for this field-->
+            {% for error in form.teacher_fname.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+            <br>
+
+            {{ form.teacher_lname.label }} <br>
+            {{ form.teacher_lname(size=64) }}
+            <!--List the errors for this field-->
+            {% for error in form.teacher_lname.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+            <br>
+
+            {{ form.teacher_email.label }} <br>
+            {{ form.teacher_email(size=64) }}
+            <!--List the errors for this field-->
+            {% for error in form.teacher_email.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+            <br>
+
+            {{ form.teacher_pronouns.label }} <br>
+            {{ form.teacher_pronouns(size=64) }}
+            <!--List the errors for this field-->
+            {% for error in form.teacher_pronouns.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+            <br>
+
+            {{ form.teacher_room.label }} <br>
+            {{ form.teacher_room(size=64) }}
+            <!--List the errors for this field-->
+            {% for error in form.teacher_room.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+            <br>
+
+            {{ form.subject_taught.label }} <br>
+            {{ form.subject_taught(size=64) }}
+            <!--List the errors for this field-->
+            {% for error in form.subject_taught.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+            <br>
+
+            {{ form.teacher_academy.label }} <br>
+            {{ form.teacher_academy(size=64) }}
+            <!--List the errors for this field-->
+            {% for error in form.teacher_academy.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            
+
+            <br> <br>
+            {{form.submit()}}
+        </form>
+        
+{% endblock %}

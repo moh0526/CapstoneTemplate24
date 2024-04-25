@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block body %}
+<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+
+<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+<div class="row">
+    <div>
+        <h1 class="display-1"> Welcome to Reviews for Oakland Technical High School teachers</h1>
+    </div>
+    <div class="col">
+        <a href="/review/new" class="btn btn-primary btn-sm mt-5" role="button">Comment Button</a>
+    </div>
+</div>
+
+{% if reviews %}
+    {% for review in reviews %}
+        <div class="row border-bottom">
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">Date</h3>
+                {% endif %}
+
+                <a href="/review/{{review.id}}">
+                    {{moment(review.create_date).calendar()}}
+                </a>
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">5 Star Rating</h3>
+                {% endif %}
+                {{review.five_star_rating}}
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 class="display-5">Stress Rating</h3>
+                {% endif %}
+                {{review.stress_rating}}
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Can you listen to music</h3>
+                {% endif %}
+                {{review.listen_to_music}}
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Do you have breaks during class</h3>
+                {% endif %}
+                {{review.breaks_during_class}}
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                    <h3 class="display-5">Do you have games in lesson</h3>
+                {% endif %}
+                {{review.games_in_lesson}}
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,79 @@
+<!-- This is a blank template.  You can copy this to make a new template page. -->
+
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if teacher %}
+    {% if teacher.author == current_user %}
+    <a data-toggle="tooltip" data-placement="top" title="Delete Teacher" href="/teacher/delete/{{teacher.id}}">
+        <img width="40" class="bottom-image" src="/static/delete.png">
+    </a>
+    <a data-toggle="tooltip" data-placement="top" title="Edit Teacher" href="/teacher/edit/{{teacher.id}}">
+        <img width="40" class="bottom-image" src="/static/edit.png">
+    </a>
+    {% endif %}
+
+    {{moment(teacher.create_date).calendar()}} by {{teacher.author.fname}} {{teacher.author.lname}} 
+
+    <p>
+        Teacher First Name: {{teacher.teacher_fname}}
+        <br>
+        Teacher Last Name: {{teacher.teacher_lname}}
+        <br>
+        Teacher Email: {{teacher.teacher_email}}
+        <br>
+        Teacher Pronouns: {{teacher.teacher_pronouns}}
+        <br>
+        Teacher Room: {{teacher.teacher_room}}
+        <br>
+        Teacher Subject: {{teacher.subject_taught}}
+        <br>
+        Teacher Academy: {{teacher.teacher_academy}}
+        
+    </p>
+    
+    <a href="/review/new/{{teacher.id}}" class="btn btn-primary btn-sm" role="button">New Review</a>
+
+    {% if reviews %}
+    <h1 class="display-5">Reviews</h1>
+    {% for review in reviews %}
+        {% if current_user == review.author %}
+            <a href="/review/delete/{{review.id}}"><img width="20" src="/static/delete.png"></a> 
+            <a href="/review/edit/{{review.id}}"><img width="20" src="/static/edit.png"></a>
+        {% endif %}
+        {{moment(review.create_date).calendar()}}
+        {% if review.modifydate %}
+            modified {{moment(review.modifydate).calendar()}}
+        {% endif %}
+        <br>
+<!-- 
+        <p>
+            Average Five Star Rating {{review.average_five_star_rating}}
+        </p>
+
+        <br> -->
+
+        <p>
+            <br>
+            Five Star Rating: {{review.five_star_rating}}
+            <br>
+            Stress Rating: {{review.stress_rating}}
+            <br>
+            Difficulty Rating: {{review.difficulty_rating}}
+            <br>
+            Can you listen to music in class: {{review.listen_to_music}}
+            <br>
+            Do you get breaks during class: {{review.breaks_during_class}}
+            <br>
+            Are games incorporated in the lessons: {{review.games_in_lesson}}
+        </p>
+    {% endfor %}
+    {% else %}
+        <h1 class="display-5">No Reviews</h1>
+    {% endif %}
+{% else %}
+    
+{% endif %}
+
+{% endblock %}

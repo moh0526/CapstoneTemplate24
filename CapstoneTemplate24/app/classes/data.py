@@ -13,7 +13,7 @@ from setuptools import SetuptoolsDeprecationWarning
 from app import app
 from flask import flash
 from flask_login import UserMixin
-from mongoengine import FileField, EmailField, StringField, IntField, ReferenceField, DateTimeField, BooleanField, FloatField, CASCADE
+from mongoengine import FileField, EmailField, StringField, IntField, ReferenceField, DateTimeField, BooleanField, FloatField, ImageField, CASCADE
 from flask_mongoengine import Document
 import datetime as dt
 import jwt
@@ -82,13 +82,14 @@ class Animal(Document):
 
 class Teacher(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE)
-    subject = StringField()
-    fname = StringField()
-    lname = StringField()
-    teacheremail = StringField()
+    teacher_fname = StringField()
+    teacher_lname = StringField()
+    teacher_email = StringField()
+    teacher_pronouns = StringField()
     course = StringField()
-    classes_taught = StringField()
-    room = IntField()
+    subject_taught = StringField()
+    teacher_room = StringField()
+    teacher_academy = StringField()
     create_date = DateTimeField(default=dt.datetime.utcnow)
     modify_date = DateTimeField()
     meta = {
@@ -97,12 +98,20 @@ class Teacher(Document):
 
 class Review(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE)
-    subject = StringField()
+    teacher = ReferenceField('Teacher', reverse_delete_rule=CASCADE)
+    review = ReferenceField('Review', reverse_delete_rule=CASCADE)
     five_star_rating = FloatField()
     stress_rating = FloatField()
-    listen_music = BooleanField()
-    break_time = BooleanField()
-    games_lesson = BooleanField()
+    difficulty_rating = FloatField()
+    listen_to_music =StringField()
+    breaks_during_class = StringField()
+    games_in_lesson = StringField()
+    # average_five_star_rating = FloatField()
+    # average_stress_rating = FloatField()
+    # average_difficulty_rating = FloatField()
+    # average_listen_to_music =StringField()
+    # average_breaks_during_class = StringField()
+    # average_games_in_lesson = StringField()
     create_date = DateTimeField(default=dt.datetime.utcnow)
     modify_date = DateTimeField()
     meta = {

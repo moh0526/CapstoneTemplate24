@@ -6,7 +6,7 @@ from flask_wtf import FlaskForm
 import mongoengine.errors
 from wtforms.validators import URL, Email, DataRequired, NumberRange
 from wtforms.fields.html5 import URLField, DateField, IntegerRangeField, EmailField
-from wtforms import StringField, SubmitField, TextAreaField, IntegerField, SelectField, FileField, RadioField
+from wtforms import StringField, SubmitField, TextAreaField, IntegerField, SelectField, FileField, RadioField, DecimalField
 from wtforms_components import TimeField
 
 class ProfileForm(FlaskForm):
@@ -46,9 +46,23 @@ class AnimalForm(FlaskForm):
     animalname = StringField('Animal Name', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
+class TeacherForm(FlaskForm):
+    teacher_fname = StringField('First Name', default = 'Jane', validators=[DataRequired()])
+    teacher_lname = StringField('Last Name', default = 'Doe', validators=[DataRequired()])
+    teacher_email = EmailField('Email', default = 'jane.doe@ousd.org', validators=[Email()])
+    teacher_pronouns = StringField('Pronouns', default = 'She/her')
+    teacher_room = StringField('Room Number', default = '100', validators=[DataRequired()])
+    subject_taught = StringField('Course', default = 'English', validators=[DataRequired()])
+    teacher_academy = StringField('Academy', default = 'None')
+    submit = SubmitField('Submit')
+
 class TeacherReviewForm(FlaskForm):
-    subject = StringField('Subject', validators=[DataRequired()])
-    
+    five_star_rating = DecimalField('Five Star Rating', validators=[NumberRange(0, 5, "Make sure you are within the range between 0 and 5")])
+    stress_rating = DecimalField('Stress Rating', validators=[NumberRange(0, 5, "Make sure you are within the range between 0 and 5")])
+    difficulty_rating = DecimalField('Difficulty Rating', validators=[NumberRange(0, 5, "Make sure you are within the range between 0 and 5")])
+    listen_to_music = RadioField('Yes, No or Sometimes: Can you Listen to music during class?', choices=[("Yes"), ("No"), ("Sometimes")], validators=[DataRequired()])
+    breaks_during_class = RadioField('Yes, No, or Sometimes: Do you get breaks during class?', choices=[("Yes"), ("No"), ("Sometimes")], validators=[DataRequired()])
+    games_in_lesson = RadioField('Yes, No, or Sometimes: Are games incorporated into the lesson plan?', choices=[("Yes"), ("No"), ("Sometimes")], validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 class CommentForm(FlaskForm):

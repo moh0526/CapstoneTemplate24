@@ -1,0 +1,77 @@
+<!-- this is a generic form page.  Best way to make a new form page is to 
+copy this one and then edit it. -->
+
+{% extends "base.html" %}
+
+{% block body %}
+        <h1> Teacher Review Form</h1>
+
+        <!--List all errors in a group at the top-->
+        {% for author in form.errors %}
+            {% for error in form.errors[author] %}
+                <div class="alert alert-error">
+                    <strong>Error!</strong>{{author}}: {{error}}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <form method=post>
+            {{ form.hidden_tag() }}
+
+            {{ form.five_star_rating.label }} <br>
+            {{ form.five_star_rating(size=64) }}
+            <!--List the errors for this field-->
+            {% for error in form.five_star_rating.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+            <br>
+
+            {{ form.stress_rating.label }} <br>
+            {{ form.stress_rating(size=64) }}
+            <!--List the errors for this field-->
+            {% for error in form.stress_rating.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+            <br>
+
+            {{ form.difficulty_rating.label }} <br>
+            {{ form.difficulty_rating(size=64) }}
+            <!--List the errors for this field-->
+            {% for error in form.difficulty_rating.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+            <br>
+
+            {{ form.listen_to_music.label }} <br>
+            {{ form.listen_to_music(size=64) }}
+            <!--List the errors for this field-->
+            {% for error in form.listen_to_music.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+            <br>
+
+            {{ form.breaks_during_class.label }} <br>
+            {{ form.breaks_during_class(size=64) }}
+            <!--List the errors for this field-->
+            {% for error in form.breaks_during_class.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+            <br>
+
+            {{ form.games_in_lesson.label }} <br>
+            {{ form.games_in_lesson(size=64) }}
+            <!--List the errors for this field-->
+            {% for error in form.games_in_lesson.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+            <br> <br>
+            {{form.submit()}}
+        </form>
+        
+{% endblock %}

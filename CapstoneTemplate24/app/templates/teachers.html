@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block body %}
+<img src="/static/CloudsPNG.png" class="rounded float-end" width = "200" hieght= "200" alt="...">
+
+<img src="/static/CloudsPNG.png" class="rounded float-start" width = "200" hieght= "200" alt="...">    </div>
+<div class="row">
+    <div>
+        <h1 class="display-1"> Welcome to Teacher Profiles for  Oakland Technical High School </h1>
+    </div>
+    <div class="col">
+        <a href="/teacher/new" class="btn btn-primary btn-sm mt-5" role="button">New Teacher Button</a>
+    </div>
+</div>
+
+<br>
+
+{% if teachers %}
+    {% for teacher in teachers %}
+        <div class="row border-bottom">
+            <div class="col-1">
+                {% if loop.index == 1 %}
+                {% endif %}
+                <a href="/teacher/{{teacher.id}}" class="btn btn-primary btn-sm mt-5" role="button">Teacher Profile</a>
+            </div>
+            <div class="col-1">
+                {% if loop.index == 1 %}
+                <h4 class="display-8">Date</h4>
+                {% endif %}
+                    {{moment(teacher.create_date).calendar()}}
+            </div>
+            <div class="col-1">
+                {% if loop.index == 1 %}
+                <h4 class="display-8">First Name</h4>
+                {% endif %}
+                {{teacher.teacher_fname}}
+            </div>
+            <div class="col-1">
+                {% if loop.index == 1 %}
+                <h4 class="display-8">Last Name</h4>
+                {% endif %}
+                {{teacher.teacher_lname}}
+            </div>
+            <div class="col-3">
+                {% if loop.index == 1 %}
+                    <h4 class="display-8">Email</h4>
+                {% endif %}
+                {{teacher.teacher_email}}
+            </div>
+            <div class="col-1">
+                {% if loop.index == 1 %}
+                    <h4 class="display-8">Pronouns</h4>
+                {% endif %}
+                {{teacher.teacher_pronouns}}
+            </div>
+            <div class="col-1">
+                {% if loop.index == 1 %}
+                    <h4 class="display-8">Room</h4>
+                {% endif %}
+                {{teacher.teacher_room}}
+            </div>
+            <div class="col-1">
+                {% if loop.index == 1 %}
+                    <h4 class="display-8">Subject</h4>
+                {% endif %}
+                {{teacher.subject_taught}}
+            </div>
+            <div class="col-1">
+                {% if loop.index == 1 %}
+                    <h4 class="display-8">Teacher Academy</h4>
+                {% endif %}
+                {{teacher.teacher_academy}}
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+
+{% endif %}
+
+{% endblock %}

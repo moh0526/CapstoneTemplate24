@@ -1,0 +1,35 @@
+<!-- This is a blank template.  You can copy this to make a new template page. -->
+
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if teacher %}
+    {% if review.author == current_user %}
+    <a data-toggle="tooltip" data-placement="top" title="Delete Review" href="/review/delete/{{review.id}}">
+        <img width="40" class="bottom-image" src="/static/delete.png">
+    </a>
+    <a data-toggle="tooltip" data-placement="top" title="Edit Review" href="/review/edit/{{review.id}}">
+        <img width="40" class="bottom-image" src="/static/edit.png">
+    </a>
+    {% endif %}
+
+    {{moment(review.create_date).calendar()}} by {{review.author.fname}} {{review.author.lname}} 
+
+    <p>
+        5 Star Rating: {{teacher.five_star_rating}}
+        <br>
+        Stress Rating: {{teacher.stress_rating}}
+        <br>
+        Yes or No: Can you listen to music {{teacher.listen_to_music}}
+        <br>
+        Yes or No: Do you have breaks during class {{teacher.breaks_during_class}}
+        <br>
+        Yes or No: Do you have games in lesson {{teacher.games_in_lesson}}
+        
+        
+    </p>
+{% else %}
+    
+{% endif %}
+{% endblock %}
