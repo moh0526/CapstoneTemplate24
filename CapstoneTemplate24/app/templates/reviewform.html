@@ -16,6 +16,13 @@ copy this one and then edit it. -->
         {% endfor %}
 
         <form method=post>
+            
+            <br>
+            Teacher Name: {{teacher.teacher_fname}} {{teacher.teacher_lname}}
+
+            <br>
+            <br>
+
             {{ form.hidden_tag() }}
 
             {{ form.five_star_rating.label }} <br>

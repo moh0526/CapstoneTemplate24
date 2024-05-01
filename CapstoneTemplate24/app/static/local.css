@@ -1,3 +1,9 @@
 html body {
-    background-color: #9bbeeb;
+    background-color: #eb9b9b;
+    font-family: "Georgia";
+  }
+
+  .navbar {
+    font-family: Arial;
+    background-color: #eb9b9b
   }

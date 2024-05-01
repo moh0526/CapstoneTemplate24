@@ -4,7 +4,7 @@
 
 from flask_wtf import FlaskForm
 import mongoengine.errors
-from wtforms.validators import URL, Email, DataRequired, NumberRange
+from wtforms.validators import URL, Email, DataRequired, NumberRange, EqualTo
 from wtforms.fields.html5 import URLField, DateField, IntegerRangeField, EmailField
 from wtforms import StringField, SubmitField, TextAreaField, IntegerField, SelectField, FileField, RadioField, DecimalField
 from wtforms_components import TimeField
