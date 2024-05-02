@@ -1,9 +1,12 @@
 html body {
-    background-color: #eb9b9b;
+    background-color: #eab24b;
     font-family: "Georgia";
   }
 
   .navbar {
-    font-family: Arial;
-    background-color: #eb9b9b
+    font-family: "Arial";
+  }
+
+  .titlepage {
+    font-family: "Times New Roman";
   }
